@@ -224,7 +224,10 @@ ProgressBar.prototype.update = function (ratio, tokens) {
 
 ProgressBar.prototype.interrupt = function (message) {
   // clear the current line
-  this.stream.clearLine();
+  // `clearLine` requires a direction argument. 0 clears the entire line.
+  // Passing the direction explicitly avoids unexpected behaviour on some
+  // Node.js versions where the argument is mandatory.
+  this.stream.clearLine(0);
   // move the cursor to the start of the line
   this.stream.cursorTo(0);
   // write the message text
@@ -244,7 +247,9 @@ ProgressBar.prototype.interrupt = function (message) {
 ProgressBar.prototype.terminate = function () {
   if (this.clear) {
     if (this.stream.clearLine) {
-      this.stream.clearLine();
+      // ensure we clear the entire line; some runtimes require the direction
+      // parameter to be specified explicitly.
+      this.stream.clearLine(0);
       this.stream.cursorTo(0);
     }
   }
