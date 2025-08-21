@@ -50,7 +50,7 @@ module.exports = class extends Command {
       if (content.length > 2000) return message.channel.send(`${message.client.emoji.fail} ${language.cc2}`);
 
 
-if(guildDB.isPremium === "false"){
+if(!guildDB.isPremium){
   const conditional = {
    guildId: message.guild.id
 }

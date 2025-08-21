@@ -162,7 +162,7 @@
     </div>
     
 <p style="background-color: #2f2f2f; color: #2f2f2f ">HELLOO :) you found a secret message, poggers</p>
-<% if(settings.isPremium == "false"){ %>
+<% if(settings.isPremium == false){ %>
 <div class="premium"><h1>This is a Premium Feature</h1>
 <button class="save-button" type="button" onclick="window.location.href='/premium'">Unlock Now!</button>
 </div>
@@ -268,7 +268,7 @@ max-height:200px; background-color: #2f2f2f; color: white;" ><%= settings.sugges
 <br>
 <button class="save-button" type="button">Save Changes</button>
 
-<% } else if(settings.isPremium == "true"){ %>
+<% } else if(settings.isPremium == true){ %>
 <div class="customize">
 <h2>Customize Your Embed</h2>
 <br>

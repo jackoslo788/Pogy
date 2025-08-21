@@ -169,7 +169,7 @@ max-height:200px; min-height:60px; background-color: #2f2f2f; color: white;" id=
 
                                                     <% } else { %>
                                                       <input name="ticketClose" class="input-switch" type="checkbox" id="switch3"></input><label class="label-switch"for="switch3" checked>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                                    <% } %>Allow Users to Close ticket &nbsp;<% if(settings.isPremium == "false"){ %><a href="https://pogy.xyz/premium"><i style="font-size:14px; color: yellow" class="fa">&#xf006;</i></a><% } %></p>
+                                                    <% } %>Allow Users to Close ticket &nbsp;<% if(settings.isPremium == false){ %><a href="https://pogy.xyz/premium"><i style="font-size:14px; color: yellow" class="fa">&#xf006;</i></a><% } %></p>
 <br>
  </div> 
 <br>
@@ -228,7 +228,7 @@ max-height:200px; min-height:60px; background-color: #2f2f2f; color: white;" id=
 
              <% } else { %>
          <input name="reactionfooterEmbed" class="input-switch" type="checkbox" onclick="myFunction04()" id="reactionEmbedFooter" ></input><label class="label-switch"for="reactionEmbedFooter">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-         <% } %> &nbsp;Reaction Footer <% if(settings.isPremium == "false"){ %><a href="https://pogy.xyz/premium"><i style="font-size:14px; color: yellow" class="fa">&#xf006;</i></a><% } %></p>                                                 
+         <% } %> &nbsp;Reaction Footer <% if(settings.isPremium == false){ %><a href="https://pogy.xyz/premium"><i style="font-size:14px; color: yellow" class="fa">&#xf006;</i></a><% } %></p>                                                 
 
 <div id="reactionEmbedFooterID" style="display:none">
 <div class="user-box">
@@ -255,9 +255,9 @@ max-height:200px; min-height:60px; background-color: #2f2f2f; color: white;" id=
                                                 <% } %>
                                             </select>
 
-<p><bold>Ticket Reaction</bold> &nbsp;<% if(settings.isPremium == "false"){ %><a href="https://pogy.xyz/premium"><i style="font-size:14px; color: yellow" class="fa">&#xf006;</i></a><% } %><p> 
+<p><bold>Ticket Reaction</bold> &nbsp;<% if(settings.isPremium == false){ %><a href="https://pogy.xyz/premium"><i style="font-size:14px; color: yellow" class="fa">&#xf006;</i></a><% } %><p> 
 <select style="background-color: #2f2f2f; color: white; border-radius: 5px; "  name="ticketReaction" class="select">
-<% if(settings.isPremium == "false"){ %>
+<% if(settings.isPremium == false){ %>
 
 <% if(ticket.ticketReaction == "🎫"){ %>
 
@@ -602,10 +602,10 @@ max-height:200px; min-height:60px; background-color: #2f2f2f; color: white;" id=
       <input style="min-width: 180px;  max-width: 300px; background-color: #2f2f2f; color: white; border-radius: 5px; " class="form-control" type="text" name="messageID" value="<%= ticket.messageID[ticket.messageID.length - 1] %>" placeholder="message ID">
 </div>
 
-<p><bold>Ticket Reaction</bold> &nbsp;<% if(settings.isPremium == "false"){ %><i style="font-size:14px; color: yellow" class="fa">&#xf006;</i><% } %></p> 
+<p><bold>Ticket Reaction</bold> &nbsp;<% if(settings.isPremium == false){ %><i style="font-size:14px; color: yellow" class="fa">&#xf006;</i><% } %></p> 
 
 <select style="background-color: #2f2f2f; color: white; border-radius: 5px; "  name="ticketReaction" class="select">
-<% if(settings.isPremium == "false"){ %>
+<% if(settings.isPremium == false){ %>
 
 <% if(ticket.ticketReaction == "🎫"){ %>
 

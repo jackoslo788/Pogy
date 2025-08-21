@@ -145,7 +145,7 @@ guildDB.report.reportCase =  serverCase + 1;
 await guildDB.save().catch(()=>{})
 
 channel.send(reportEmbed1).then(async(reportEmbed) => {
-if(guildDB.isPremium == "true"){
+if(guildDB.isPremium){
 if(guildDB.report.upvote == "true"){
   if(guildDB.report.reaction == "1"){
 
@@ -235,7 +235,7 @@ let reportEmbed1 = new MessageEmbed()
 guildDB.report.reportCase =  serverCase + 1;
 await guildDB.save().catch(()=>{})
 channel.send(reportEmbed1).then(async(reportEmbed) => {
-if(guildDB.isPremium == "true"){
+if(guildDB.isPremium){
 if(guildDB.report.upvote == "true"){
   if(guildDB.report.reaction == "1"){
 reportEmbed.react('⬆️').catch(()=>{})

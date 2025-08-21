@@ -4,12 +4,12 @@ const guildConfigSchema = mongoose.Schema({
 
 code: {type: mongoose.SchemaTypes.String, default: null},
 
-expiresAt: {type: mongoose.SchemaTypes.String, default: Date.now() + 2592000000},
+expiresAt: {type: mongoose.SchemaTypes.Number, default: () => Date.now() + 2592000000},
 
 plan: {type: mongoose.SchemaTypes.String, default: null},
 
 
-  
+
 
 });
 

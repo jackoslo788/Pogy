@@ -51,7 +51,7 @@ module.exports = class extends Command {
   
       if (this.client.commands.get(namee) || this.client.aliases.get(namee)) return message.channel.send(`That command is already an existing bot command!`);
 
-if(guildDB.isPremium === "false"){
+if(!guildDB.isPremium){
   const conditional = {
    guildId: message.guild.id
 }

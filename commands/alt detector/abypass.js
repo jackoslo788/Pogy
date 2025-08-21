@@ -53,10 +53,10 @@ module.exports = class extends Command {
           }
           
           let oldAllowedAlts = db.allowedAlts //[]
-          if(guildDB.isPremium === "false") {
+          if(!guildDB.isPremium) {
           if(oldAllowedAlts.length === 10) return message.channel.send(new discord.MessageEmbed().setColor(client.color.red).setDescription(language.abypassNotPremium10))
           }
-          if(guildDB.isPremium === "true") {
+          if(guildDB.isPremium) {
           if(oldAllowedAlts.length === 50) return message.channel.send(new discord.MessageEmbed().setColor(client.color.red).setDescription(language.abypassNotPremium10.replace("10", "50")))
           }
           oldAllowedAlts.push(u.id)
