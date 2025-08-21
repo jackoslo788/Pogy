@@ -81,7 +81,7 @@ let embed = new discord.MessageEmbed()
 
 
 
-  if(guildDB.isPremium == "false"){
+  if(!guildDB.isPremium){
   channel.send(embed).catch(err => {return message.channel.send(`${language.suggesting5}`)})
   .then(async(sug) => {
    
@@ -92,7 +92,7 @@ let embed = new discord.MessageEmbed()
   sug.react("790491137289879583").catch(() => {})
   
   })
-  } else if(guildDB.isPremium == "true"){
+  } else if(guildDB.isPremium){
    let member = message.member
    const description = guildDB.suggestion.description || `{suggestion}`;
    const footer = guildDB.suggestion.footer || `suggested by {user_tag}`

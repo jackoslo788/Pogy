@@ -134,7 +134,7 @@ setInterval(async () => {
 
 
 const conditional = {
-    isPremium: "true",
+    isPremium: true,
 }
 const results = await Guild.find(conditional)
 
@@ -143,7 +143,7 @@ if (results && results.length) {
       
   
 
-       if (Number(result.premium.redeemedAt) >= Number(result.premium.expiresAt)) {
+       if (Date.now() >= Number(result.premium.expiresAt)) {
             
 
 const guildPremium = this.client.guilds.cache.get(result.guildId);
@@ -176,7 +176,7 @@ if(guildPremium){
       
 
 
-    result.isPremium = "false";
+    result.isPremium = false;
     result.premium.redeemedBy.id = null;
     result.premium.redeemedBy.tag = null;
     result.premium.redeemedAt = null;

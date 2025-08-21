@@ -279,7 +279,7 @@ if(db.option === 2) {
       if(emoji.toString() === "🎫" || emoji.toString() === "🎟️" || emoji.toString() === "📩" ||emoji.toString() === "✅" ||emoji.toString() === "📻" ||emoji.toString() === "☑️" ||emoji.toString() === "📲" ||emoji.toString() === "📟" ||emoji.toString() === "🆕" ||emoji.toString() === "📤" ||emoji.toString() === "📨" ||emoji.toString() === "🔑"||emoji.toString() === "🏷️") {
 
 
-if(guildDB.isPremium == "false"){
+if(!guildDB.isPremium){
    if(emoji.toString() === "🎟️" ||emoji.toString() === "✅" ||emoji.toString() === "📻" ||emoji.toString() === "☑️" ||emoji.toString() === "📲" ||emoji.toString() === "📟" ||emoji.toString() === "🆕" ||emoji.toString() === "📤" ||emoji.toString() === "📨" ||emoji.toString() === "🔑"||emoji.toString() === "🏷️") return;
 }
         let serverCase = db.ticketCase;

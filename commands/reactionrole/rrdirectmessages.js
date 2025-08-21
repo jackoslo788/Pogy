@@ -34,7 +34,7 @@ module.exports = class extends Command {
       let success = message.client.emoji.success
       const prefix = guildDB.prefix;
 
-      if(guildDB.isPremium == "false"){
+      if(!guildDB.isPremium){
       return message.channel.send(new MessageEmbed().setColor(message.guild.me.displayHexColor).setDescription(`${fail} Slow down here, the current command is only for premium guilds.\n\n[Check Premium Here](https://pogy.xyz/premium)`))}
 
   const missingPermEmbed = new MessageEmbed()

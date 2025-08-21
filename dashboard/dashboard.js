@@ -733,7 +733,7 @@ const now = new Date();
 let DDate = date.format(now, 'YYYY/MM/DD HH:mm:ss');
  member.send(new Discord.MessageEmbed().setDescription(`**Congratulations!**\n\n**${guild.name}** Is now a premium guild! Thanks a ton!\n\nIf you have any questions please contact me [here](https://discord.gg/FqdH4sfKBg)\n\n__**Reciept:**__\n**Reciept ID:** ${ID}\n**Redeem Date:** ${DDate}\n**Guild Name:** ${guild.name}\n**Guild ID:** ${guild.id}\n\n**Please make sure to keep this information safe, you might need it if you ever wanna refund / transfer servers.**\n\n**Expires At:** ${expires}`).setColor('GREEN').setFooter(guild.name)).catch(()=>{});
 
-  storedSettings.isPremium = "true";
+  storedSettings.isPremium = true;
        storedSettings.premium.redeemedBy.id = member.id;
        storedSettings.premium.redeemedBy.tag = member.user.tag;
        storedSettings.premium.redeemedAt = Date.now()
@@ -3620,7 +3620,7 @@ storedSettings.reactionColor = data.reactionrolescolor;
       // rr dms
       let checkrrDms = req.body["rrDM"];
 
-if(storedSettings.isPremium == "false"){
+if(storedSettings.isPremium === false){
   storedSettings.reactionDM = true
 } else {
   
@@ -3836,7 +3836,7 @@ if(maintenance && maintenance.toggle == "true") {
         if (client.commands.get(check) || client.aliases.get(check)) return;
         const content = JSON.stringify(data)
         if (!content) return;
-if(storedSettings.isPremium === "false"){
+if(storedSettings.isPremium === false){
   const conditional = {
    guildId: guild.id
 }
@@ -4193,7 +4193,7 @@ In the mean time, please explain your issue below`;
         // close ticket
         let checkPing2 = req.body["ticketClose"];
 
-        if (storedSettings.isPremium == "false") {
+        if (storedSettings.isPremium === false) {
           ticketSettings.ticketClose = true;
         } else {
           if (checkPing2) {
@@ -4260,7 +4260,7 @@ In the mean time, please explain your issue below`;
 
             let ticketReaction = data.ticketReaction;
 
-            if (storedSettings.isPremium == "false") ticketReaction = `🎫`;
+            if (storedSettings.isPremium === false) ticketReaction = `🎫`;
 
 
             if (!embedColor || !reactionTitle || !reactionDescription || !ticketChannel || !ticketReaction) {
@@ -4282,7 +4282,7 @@ In the mean time, please explain your issue below`;
               ticketSettings.ticketTimestamp = false
             }
 
-            if (storedSettings.isPremium == "false") {
+            if (storedSettings.isPremium === false) {
               ticketSettings.ticketFooter = "Powered by Pogy.xyz";
             } else {
               let checkFooter2 = req.body["reactionfooterEmbed"];
@@ -4308,7 +4308,7 @@ In the mean time, please explain your issue below`;
 
 
             let footer = "Powered by Pogy.xyz";
-            if (storedSettings.isPremium == "true") footer = reactionFooter;
+            if (storedSettings.isPremium === true) footer = reactionFooter;
 
 
 
@@ -4319,7 +4319,7 @@ In the mean time, please explain your issue below`;
               .setColor(embedColor)
               .setDescription(reactionDescription)
 
-            if (storedSettings.isPremium == "false") {
+            if (storedSettings.isPremium === false) {
               ticketEmbed.setFooter(`Powered by Pogy.xyz`)
             } else {
 
@@ -4342,27 +4342,27 @@ In the mean time, please explain your issue below`;
             let emoji = data.ticketReaction;
 
 
-            if (data.ticketReaction == "ticketReaction2" && storedSettings.isPremium == "true") {
+            if (data.ticketReaction == "ticketReaction2" && storedSettings.isPremium === true) {
               emoji = "🎟️";
-            } else if (data.ticketReaction == "✅" && storedSettings.isPremium == "true") {
+            } else if (data.ticketReaction == "✅" && storedSettings.isPremium === true) {
               emoji = "✅";
-            } else if (data.ticketReaction == "📻" && storedSettings.isPremium == "true") {
+            } else if (data.ticketReaction == "📻" && storedSettings.isPremium === true) {
               emoji = "📻";
-            } else if (data.ticketReaction == "☑️" && storedSettings.isPremium == "true") {
+            } else if (data.ticketReaction == "☑️" && storedSettings.isPremium === true) {
               emoji = "☑️";
-            } else if (data.ticketReaction == "📲" && storedSettings.isPremium == "true") {
+            } else if (data.ticketReaction == "📲" && storedSettings.isPremium === true) {
               emoji = "📲";
-            } else if (data.ticketReaction == "📟" && storedSettings.isPremium == "true") {
+            } else if (data.ticketReaction == "📟" && storedSettings.isPremium === true) {
               emoji = "📟";
-            } else if (data.ticketReaction == "🆕" && storedSettings.isPremium == "true") {
+            } else if (data.ticketReaction == "🆕" && storedSettings.isPremium === true) {
               emoji = "🆕";
-            } else if (data.ticketReaction == "📤" && storedSettings.isPremium == "true") {
+            } else if (data.ticketReaction == "📤" && storedSettings.isPremium === true) {
               emoji = "📤";
-            } else if (data.ticketReaction == "📨" && storedSettings.isPremium == "true") {
+            } else if (data.ticketReaction == "📨" && storedSettings.isPremium === true) {
               emoji = "📨";
-            } else if (data.ticketReaction == "🔑" && storedSettings.isPremium == "true") {
+            } else if (data.ticketReaction == "🔑" && storedSettings.isPremium === true) {
               emoji = "🔑";
-            } else if (data.ticketReaction == "🏷️" && storedSettings.isPremium == "true") {
+            } else if (data.ticketReaction == "🏷️" && storedSettings.isPremium === true) {
               emoji = "🏷️";
             } else {
               emoji = "🎫";
@@ -4373,7 +4373,7 @@ In the mean time, please explain your issue below`;
             if (data.ticketReaction == "ticketReaction1") emoji = "🎫";
             if (data.ticketReaction == "📩") emoji = "📩";
 
-            if (storedSettings.isPremium == "false") {
+            if (storedSettings.isPremium === false) {
 
               if (data.ticketReaction == "🎫" || data.ticketReaction == "📩") {
                 ticketSettings.ticketReaction = data.ticketReaction
@@ -4453,27 +4453,27 @@ In the mean time, please explain your issue below`;
             // get emoji reaction 
 
             let emoji = data.ticketReaction;
-            if (data.ticketReaction == "ticketReaction2" && storedSettings.isPremium == "true") {
+            if (data.ticketReaction == "ticketReaction2" && storedSettings.isPremium === true) {
               emoji = "🎟️";
-            } else if (data.ticketReaction == "✅" && storedSettings.isPremium == "true") {
+            } else if (data.ticketReaction == "✅" && storedSettings.isPremium === true) {
               emoji = "✅";
-            } else if (data.ticketReaction == "📻" && storedSettings.isPremium == "true") {
+            } else if (data.ticketReaction == "📻" && storedSettings.isPremium === true) {
               emoji = "📻";
-            } else if (data.ticketReaction == "☑️" && storedSettings.isPremium == "true") {
+            } else if (data.ticketReaction == "☑️" && storedSettings.isPremium === true) {
               emoji = "☑️";
-            } else if (data.ticketReaction == "📲" && storedSettings.isPremium == "true") {
+            } else if (data.ticketReaction == "📲" && storedSettings.isPremium === true) {
               emoji = "📲";
-            } else if (data.ticketReaction == "📟" && storedSettings.isPremium == "true") {
+            } else if (data.ticketReaction == "📟" && storedSettings.isPremium === true) {
               emoji = "📟";
-            } else if (data.ticketReaction == "🆕" && storedSettings.isPremium == "true") {
+            } else if (data.ticketReaction == "🆕" && storedSettings.isPremium === true) {
               emoji = "🆕";
-            } else if (data.ticketReaction == "📤" && storedSettings.isPremium == "true") {
+            } else if (data.ticketReaction == "📤" && storedSettings.isPremium === true) {
               emoji = "📤";
-            } else if (data.ticketReaction == "📨" && storedSettings.isPremium == "true") {
+            } else if (data.ticketReaction == "📨" && storedSettings.isPremium === true) {
               emoji = "📨";
-            } else if (data.ticketReaction == "🔑" && storedSettings.isPremium == "true") {
+            } else if (data.ticketReaction == "🔑" && storedSettings.isPremium === true) {
               emoji = "🔑";
-            } else if (data.ticketReaction == "🏷️" && storedSettings.isPremium == "true") {
+            } else if (data.ticketReaction == "🏷️" && storedSettings.isPremium === true) {
               emoji = "🏷️";
             } else {
               emoji = "🎫";
@@ -4484,7 +4484,7 @@ In the mean time, please explain your issue below`;
             if (data.ticketReaction == "ticketReaction1") emoji = "🎫";
             if (data.ticketReaction == "📩") emoji = "📩";
 
-            if (storedSettings.isPremium == "false") {
+            if (storedSettings.isPremium === false) {
               if (data.ticketReaction == "🎫" || data.ticketReaction == "📩") {
                 ticketSettings.ticketReaction = data.ticketReaction
               } else {
@@ -4730,7 +4730,7 @@ if(maintenance && maintenance.toggle == "true") {
 
       if (Object.prototype.hasOwnProperty.call(data, "premium")) {
 
-        if (storedSettings.isPremium == "true") {
+        if (storedSettings.isPremium === true) {
 
           //color
           if (data.color) {
@@ -4970,7 +4970,7 @@ if(maintenance && maintenance.toggle == "true") {
 
         con = arrFiltered
 
-        if (storedSettings.isPremium == "false") {
+        if (storedSettings.isPremium === false) {
 
           if (con.length > 10) {
             renderTemplate(res, req, "./new/mainaltdetector.ejs", {
@@ -4982,7 +4982,7 @@ if(maintenance && maintenance.toggle == "true") {
             return;
           }
 
-        } else if (storedSettings.isPremium == "true") {
+        } else if (storedSettings.isPremium === true) {
 
           if (con.length > 50) {
             renderTemplate(res, req, "./new/mainaltdetector.ejs", {
@@ -5135,7 +5135,7 @@ if(maintenance && maintenance.toggle == "true") {
 
         if (checkDecline3) {
 
-          if (storedSettings.isPremium == "true") {
+          if (storedSettings.isPremium === true) {
             storedSettings.report.upvote = true;
 
             //reaction

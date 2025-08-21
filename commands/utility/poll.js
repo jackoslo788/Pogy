@@ -92,7 +92,7 @@ const text = args.slice(0).join(' ')
 let msg = await message.channel.send({ embed: embed }).catch(() => {});
 
         if (timedPoll) {
-          if(guildDB.isPremium === "false"){
+          if(!guildDB.isPremium){
 if(msg){
 msg.delete().catch(()=>{})
 }

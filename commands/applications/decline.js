@@ -24,7 +24,7 @@ module.exports = class extends Command {
         guildId: message.guild.id
     });
     const language = require(`../../data/language/${guildDB.language}.json`)
-        if(guildDB.isPremium === "false"){
+        if(!guildDB.isPremium){
 
 message.channel.send(new discord.MessageEmbed().setColor(message.guild.me.displayHexColor).setDescription(`${message.client.emoji.fail} | ${language.approvepremium}.\n\n[Check Premium Here](https://pogy.xyz/premium)`))
 

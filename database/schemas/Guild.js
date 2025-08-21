@@ -17,7 +17,7 @@ const guildConfigSchema = mongoose.Schema({
     default: config.prefix || 'p!',
   },
   isPremium: {
-    type: mongoose.SchemaTypes.String,
+    type: mongoose.SchemaTypes.Boolean,
     required: false,
     default: false
   },

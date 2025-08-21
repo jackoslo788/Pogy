@@ -28,8 +28,7 @@ module.exports = class extends Command {
 
     if(!code) return message.channel.send(new Discord.MessageEmbed().setColor('RED').setDescription(`${message.client.emoji.fail} Please Specify a code to redeem`))
     
-    if(guildDB.isPremium === "true") {
-
+    if (guildDB.isPremium) {
       return message.channel.send(new Discord.MessageEmbed().setColor('RED').setDescription(`${message.client.emoji.fail} the current guild is already premium`))
     }
 
@@ -39,10 +38,14 @@ module.exports = class extends Command {
 
     if(premium){
 
+if (Number(premium.expiresAt) < Date.now()) {
+  return message.channel.send(new Discord.MessageEmbed().setColor('RED').setDescription(`${message.client.emoji.fail} This code has expired`))
+}
+
 const expires = moment(Number(premium.expiresAt)).format("dddd, MMMM Do YYYY HH:mm:ss")
 
 
-    guildDB.isPremium = "true";
+    guildDB.isPremium = true;
     guildDB.premium.redeemedBy.id = message.author.id;
     guildDB.premium.redeemedBy.tag = message.author.tag;
     guildDB.premium.redeemedAt = Date.now()
