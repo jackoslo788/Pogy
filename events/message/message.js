@@ -379,6 +379,12 @@ return message.channel.send(embed)
           if (!this.client.config.developers.includes(message.author.id)) return
         }
 
+        if (command.premiumOnly && !guildDB.isPremium) {
+          return message.channel.send(new MessageEmbed()
+            .setColor(message.guild.me.displayHexColor)
+            .setDescription(`${message.client.emoji.fail} Slow down here, the current command is only for premium guilds.\n\n[Check Premium Here](https://pogy.xyz/premium)`));
+        }
+
 if(config.datadogApiKey){
        metrics.increment('commands_served');
 }

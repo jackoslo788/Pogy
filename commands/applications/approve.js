@@ -15,7 +15,8 @@ module.exports = class extends Command {
       description: "Approve an application in the guild.",
       cooldown: 5,
       userPermission: ['MANAGE_GUILD'],
-      botPermission: ['MANAGE_ROLES']
+      botPermission: ['MANAGE_ROLES'],
+      premiumOnly: true
     })
   }
   async run(message, args) {
@@ -24,13 +25,6 @@ module.exports = class extends Command {
         guildId: message.guild.id
     });
     const language = require(`../../data/language/${guildDB.language}.json`)
-    
-    if(!guildDB.isPremium){
-
-message.channel.send(new discord.MessageEmbed().setColor(message.guild.me.displayHexColor).setDescription(`${message.client.emoji.fail} | ${language.approvepremium}.\n\n[Check Premium Here](https://pogy.xyz/premium)`))
-
-      return;
-    }
    let app = await App.findOne({
       guildID: message.guild.id
     });
@@ -100,3 +94,4 @@ member.send(new discord.MessageEmbed().setColor(message.client.color.green).setT
  
   }
 }
+

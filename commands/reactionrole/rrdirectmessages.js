@@ -17,6 +17,7 @@ module.exports = class extends Command {
         cooldown: 3,
         usage: 'on / off',
         userPermission: ['MANAGE_GUILD'],
+        premiumOnly: true,
       });
     }
 
@@ -33,9 +34,6 @@ module.exports = class extends Command {
       let fail = message.client.emoji.fail
       let success = message.client.emoji.success
       const prefix = guildDB.prefix;
-
-      if(!guildDB.isPremium){
-      return message.channel.send(new MessageEmbed().setColor(message.guild.me.displayHexColor).setDescription(`${fail} Slow down here, the current command is only for premium guilds.\n\n[Check Premium Here](https://pogy.xyz/premium)`))}
 
   const missingPermEmbed = new MessageEmbed()
   .setAuthor(`Missing User Permissions`, message.author.displayAvatarURL())
