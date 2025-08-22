@@ -1,5 +1,4 @@
 const Event = require('../../structures/Event');
-const Discord = require('discord.js');
 const config = require('./../../config.json');
 const logger = require('../../utils/logger');
 const ms = require("ms")
@@ -7,10 +6,8 @@ const muteModel = require('../../models/mute');
 const BlacklistModel = require('../../database/schemas/blacklist');
 
 const Guild = require('../../database/schemas/Guild');
-const { WebhookClient, MessageEmbed } = require('discord.js');
-const webhookClient = new WebhookClient(config.webhook_id, config.webhook_url);
+const { MessageEmbed } = require('discord.js');
 const Maintenance = require('../../database/schemas/maintenance')
-const premiumrip = new WebhookClient(config.webhook_id, config.webhook_url);
 const moment = require(`moment`)
 const fetchAll = require('../../data/structures/fetchAll');
 const emojiArray = require('../../data/structures/optionArray');
@@ -128,71 +125,6 @@ await logging.save().catch(()=>{})
   
 
 
-//premium
-
-setInterval(async () => {
-
-
-const conditional = {
-    isPremium: true,
-}
-const results = await Guild.find(conditional)
-
-if (results && results.length) {
-    for (const result of results) {
-      
-  
-
-       if (Date.now() >= Number(result.premium.expiresAt)) {
-            
-
-const guildPremium = this.client.guilds.cache.get(result.guildId);
-if(guildPremium){
-  const user = await this.client.users.cache.get(result.premium.redeemedBy.id)
-
-  if(user){
-
-    const embed = new Discord.MessageEmbed()
-    .setColor(this.client.color.red)
-    .setDescription(`Hey ${user.username}, Premium in ${guildPremium.name} has Just expired :(\n\n__You can you re-new your server here! [https://pogy.xyz/premium](https://pogy.xyz/premium)__\n\nThank you for purchasing premium Previously! We hope you enjoyed what you purchased.\n\n**- Pogy**`)
-
-    user.send(embed).catch(()=>{})
-  }
-
-
-
-   
-
-    const rip = new Discord.MessageEmbed()
-      .setDescription(`**Premium Subscription**\n\n**Guild:** ${guildPremium.name} | **${guildPremium.id}**\nRedeemed by: ${user.tag || 'Unknown'}\n**Plan:** ${result.premium.plan}`)
-      .setColor('RED')
-      .setTimestamp()
-
-      await premiumrip.send({
-        username: 'Pogy Loose Premium',
-        avatarURL: `${this.client.domain}/logo.png`,
-        embeds: [rip],
-      }).catch(()=>{});
-      
-
-
-    result.isPremium = false;
-    result.premium.redeemedBy.id = null;
-    result.premium.redeemedBy.tag = null;
-    result.premium.redeemedAt = null;
-    result.premium.expiresAt = null;
-    result.premium.plan = null;
-
-    await result.save().catch(()=>{})
-}
-
-
-    }
-
-    }
-}
-
-}, 500000)
 //POLL INTERVAL
 
  setInterval(async () => {

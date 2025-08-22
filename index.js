@@ -13,6 +13,9 @@ Pogy.domain = domain.domain || `https://pogy.xyz`;
 const emoji = require("./data/emoji");
 Pogy.emoji = emoji;
 
+const cron = require('node-cron');
+const expirePremium = require('./services/premiumExpiry');
+
 let client = Pogy
 const jointocreate = require("./structures/jointocreate");
 jointocreate(client);
@@ -27,6 +30,8 @@ if(config.dashboard === "true"){
 
         
 Pogy.start();
+
+cron.schedule('0 * * * *', () => expirePremium(Pogy));
 
 
 
