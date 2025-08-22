@@ -14,9 +14,10 @@ module.exports = class Command {
         this.ownerOnly = options.ownerOnly || false;
         this.guildOnly = options.guildOnly || false;
         this.nsfwOnly = options.nsfwOnly || false;
+        this.premiumOnly = options.premiumOnly || false;
         this.botPermission = options.botPermission || ['SEND_MESSAGES', 'EMBED_LINKS'];
         this.userPermission = options.userPermission  || null;
-        
+
     }
 
     // eslint-disable-next-line no-unused-vars
